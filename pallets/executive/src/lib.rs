@@ -116,6 +116,7 @@
 
 #![cfg_attr(not(feature = "std"), no_std)]
 use codec::{Codec, Encode};
+use log::info;
 use frame_support::{
     dispatch::PostDispatchInfo,
     storage::StorageValue,
@@ -328,6 +329,22 @@ where
 
             // execute extrinsics
             let (header, extrinsics) = block.deconstruct();
+            info!("dispatch info INCOMMING xxxxxxxxxxxxxxxxxxxxxx ");
+            let dispatchInfo = extrinsics.into_iter().take(2).get_dispatch_info();
+            info!("dispatch info  {:?}", dispatchInfo);
+            
+
+            // let seed = extrinsic_shuffler::apply_inherents_and_fetch_seed::<Block, Self>(&runtime_api, &at, body.clone())
+            //     .map_err(|e| {
+            //         warn!("cannot fetch shuffling seed from the block");
+            //         sp_blockchain::Error::Backend(format!("{}", e))
+            //     })?;
+
+            // let shuffled_extrinsics = extrinsic_shuffler::shuffle::<Block, Self>(
+            //     &runtime_api,
+            //     &at,
+            //     previous_block_extrinsics,
+            //     seed);
 
             Self::execute_extrinsics_with_book_keeping(extrinsics, *header.number());
 

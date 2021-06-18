@@ -933,22 +933,22 @@ where
 						} else {
 
 							info!("previous block has extrinsics");
-                            let seed = extrinsic_shuffler::apply_inherents_and_fetch_seed::<Block, Self>(&runtime_api, &at, body.clone())
-                                .map_err(|e| {
-                                    warn!("cannot fetch shuffling seed from the block");
-                                    sp_blockchain::Error::Backend(format!("{}", e))
-                                })?;
+                            // let seed = extrinsic_shuffler::apply_inherents_and_fetch_seed::<Block, Self>(&runtime_api, &at, body.clone())
+                            //     .map_err(|e| {
+                            //         warn!("cannot fetch shuffling seed from the block");
+                            //         sp_blockchain::Error::Backend(format!("{}", e))
+                            //     })?;
 
-                            let shuffled_extrinsics = extrinsic_shuffler::shuffle::<Block, Self>(
-                                &runtime_api,
-                                &at,
-                                previous_block_extrinsics,
-                                seed);
+                            // let shuffled_extrinsics = extrinsic_shuffler::shuffle::<Block, Self>(
+                            //     &runtime_api,
+                            //     &at,
+                            //     previous_block_extrinsics,
+                            //     seed);
 
                             runtime_api.execute_block_with_context(
                                 &at,
                                 execution_context,
-                                Block::new(import_block.header.clone(), shuffled_extrinsics),
+                                Block::new(import_block.header.clone(), previous_block_extrinsics),
                             )?;
 
 						}

@@ -36,7 +36,7 @@ decl_module! {
             DispatchClass::Mandatory
         )]
         fn set(origin, seed: SeedType) {
-            log::debug!(target: "mat", "set seed: ${:X?}", seed);
+            log::debug!(target: "random_seed", "set seed: ${:X?}", seed);
             <Self as Store>::Seed::put(seed);
         }
 

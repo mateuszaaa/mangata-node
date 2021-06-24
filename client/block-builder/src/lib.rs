@@ -252,9 +252,18 @@ where
                                 ExecutionContext::BlockConstruction,
                                 xt.clone(),
                             ) {
-                                Ok(Ok(_)) => TransactionOutcome::Commit(()),
-                                Ok(Err(_tx_validity)) => TransactionOutcome::Rollback(()),
-                                Err(_e) => TransactionOutcome::Rollback(()),
+                                Ok(Ok(_)) => {
+                                    log::debug!(target: "mat", "execution success");
+                                    TransactionOutcome::Commit(())
+                                },
+                                Ok(Err(tx_validity)) => {
+                                    log::debug!(target: "mat", "validation problem {:?}", tx_validity);
+                                    TransactionOutcome::Rollback(())
+                                },
+                                Err(e) => {
+                                    log::debug!(target: "mat", "execution problem {:?}", e);
+                                    TransactionOutcome::Rollback(())
+                                },
                             }
                         })
                     }

@@ -1621,11 +1621,14 @@ dependencies = [
 name = "frame-executive"
 version = "2.0.0"
 dependencies = [
+ "extrinsic-shuffler",
  "frame-support",
  "frame-system",
  "hex-literal",
+ "log",
  "pallet-balances",
  "pallet-indices",
+ "pallet-random-seed",
  "pallet-transaction-payment",
  "parity-scale-codec",
  "serde",

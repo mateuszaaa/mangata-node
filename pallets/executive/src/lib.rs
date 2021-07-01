@@ -124,6 +124,7 @@ use frame_support::{
     weights::{DispatchClass, DispatchInfo, GetDispatchInfo},
 };
 use frame_system::DigestOf;
+use pallet_random_seed;
 use sp_runtime::{
     generic::Digest,
     print,
@@ -330,8 +331,16 @@ where
             // execute extrinsics
             let (header, extrinsics) = block.deconstruct();
             info!("dispatch info INCOMMING xxxxxxxxxxxxxxxxxxxxxx ");
-            let dispatchInfo = extrinsics.into_iter().take(2).get_dispatch_info();
-            info!("dispatch info  {:?}", dispatchInfo);
+            //TODO get value in a proper way
+            let unchecked_extrinsic = extrinsics.get(2).unwrap();
+            let checked_extrinsic = unchecked_extrinsic.clone().check(&Default::default()).unwrap();
+            let dispatchInfo = checked_extrinsic.get_dispatch_info();
+            // info!("dispatch info  {:?}", dispatchInfo);
+
+            // let seed = match Self::apply_extrinsic(unchecked_extrinsic) {
+            //     Ok(_) => { sp_io::storage::rollback_transaction(); pallet_random_seed::get() },
+            //     Err(e) => { sp_io::storage::rollback_transaction(); () }
+            // };
             
 
             // let seed = extrinsic_shuffler::apply_inherents_and_fetch_seed::<Block, Self>(&runtime_api, &at, body.clone())

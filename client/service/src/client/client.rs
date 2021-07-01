@@ -938,7 +938,7 @@ where
                             //         warn!("cannot fetch shuffling seed from the block");
                             //         sp_blockchain::Error::Backend(format!("{}", e))
                             //     })?;
-
+							//
                             // let shuffled_extrinsics = extrinsic_shuffler::shuffle::<Block, Self>(
                             //     &runtime_api,
                             //     &at,

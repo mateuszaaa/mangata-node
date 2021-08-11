@@ -1,24 +1,15 @@
 [package]
-authors = ['Mangata team']
-edition = '2018'
-name = 'pallet-xyk'
-version = '0.1.0'
+name = "pallet-encrypted-tx"
+description = "Artemis Bridge Pallet"
+version = "0.1.0"
+edition = "2018"
+authors = [""]
+repository = "https://github.com/mangata-finance/mangata-node"
 
 [package.metadata.docs.rs]
-targets = ['x86_64-unknown-linux-gnu']
-
-# alias "parity-scale-code" to "codec"
-[dependencies.codec]
-default-features = false
-features = ['derive']
-package = 'parity-scale-codec'
-version = '1.3.4'
+targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-hex = { package = "rustc-hex", version = "2.1.0", default-features = false }
-hex-literal = { version = "0.3.1", default-features = false }
-serde = { version = "1.0.111", optional = true }
-
 frame-support = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
 frame-system = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
 sp-runtime = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
@@ -27,28 +18,17 @@ sp-std = { version = "2.0.0", default-features = false , git = "https://github.c
 mangata-primitives = { default-features = false, version = '0.1.0' , path = '../../primitives/mangata'}
 mangata-traits = { default-features = false, version = '0.1.0' , path = '../../primitives/mangata-traits'}
 sp-arithmetic = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
-
-orml-tokens = {  default-features = false, version = '0.3.1' , git = "https://github.com/mangata-finance/open-runtime-module-library", branch = "mangata-dev" }
-
-pallet-assets-info = { path = '../assets-info', default-features = false, version = '2.0.0' }
-
-
-
-[dev-dependencies]
-
-sp-io = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
+codec = { default-features = false, features = ['derive'], package = 'parity-scale-codec', version = '1.3.4' }
 
 [features]
-default = ['std']
+default = ["std"]
 std = [
-    "hex/std",
-	"serde",
     'codec/std',
+    "frame-support/std",
+    "frame-system/std",
+    "sp-core/std",
+    "sp-runtime/std",
     "sp-std/std",
-	"sp-core/std",
-    'frame-support/std',
-    'frame-system/std',
-    "pallet-assets-info/std",
     "mangata-primitives/std",
     "mangata-traits/std",
 ]

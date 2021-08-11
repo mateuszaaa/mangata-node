@@ -558,6 +558,11 @@ impl pallet_treasury::Trait for Runtime {
     type WeightInfo = (); // default weights info
 }
 
+impl pallet_encrypted_tx::Trait for Runtime {
+    type Event = Event;
+    type Executor = Xyk;
+}
+
 parameter_types! {
     pub const MinLengthName: usize = 1;
     pub const MaxLengthName: usize = 255;
@@ -622,6 +627,7 @@ construct_runtime!(
         Xyk: pallet_xyk::{Module, Call, Storage, Event<T>, Config<T>},
         Staking: pallet_staking::{Module, Call, Config<T>, Storage, Event<T>, ValidateUnsigned},
         Treasury: pallet_treasury::{Module, Call, Storage, Config, Event<T>},
+        Encrypted: pallet_encrypted_tx::{Module, Storage, Call, Event},
     }
 );
 

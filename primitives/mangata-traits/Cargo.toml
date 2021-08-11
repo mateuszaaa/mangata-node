@@ -1,0 +1,25 @@
+[package]
+name = "mangata-traits"
+version = "0.1.0"
+authors = ['Mangata team']
+edition = "2018"
+
+[dependencies]
+frame-system = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
+sp-std = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
+sp-core = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
+sp-runtime = { default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
+codec = { default-features = false, features = ['derive'], package = 'parity-scale-codec', version = '1.3.4' }
+mangata-primitives = { default-features = false, path="../mangata"}
+
+
+[features]
+default = ["std"]
+std = [
+    "mangata-primitives/std",
+    "frame-system/std",
+    "codec/std",
+    "sp-std/std",
+    "sp-core/std",
+    "sp-runtime/std",
+]

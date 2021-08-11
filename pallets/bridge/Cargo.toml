@@ -94,6 +94,7 @@ std = [
     "sp-runtime/std",
     "sp-std/std",
     "artemis-core/std",
+    "mangata-primitives/std",
 ]
 runtime-benchmarks = [
 	"frame-benchmarking",

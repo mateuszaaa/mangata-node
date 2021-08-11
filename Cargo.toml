@@ -5,5 +5,6 @@ panic = 'unwind'
 members = [
     'node',
     'pallets/xyk',
+    'pallets/encrypted-tx',
     'runtime',
 ]

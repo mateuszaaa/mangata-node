@@ -234,6 +234,7 @@ use frame_support::sp_runtime::traits::AccountIdConversion;
 use frame_support::traits::{ExistenceRequirement, Get, Vec, WithdrawReasons};
 use frame_support::Parameter;
 use mangata_primitives::{Balance, TokenId};
+use mangata_traits::ExecuteEncryptedExtrinsic;
 use orml_tokens::{MultiTokenCurrency, MultiTokenCurrencyExtended};
 use pallet_assets_info as assets_info;
 use sp_arithmetic::helpers_128bit::multiply_by_rational;
@@ -1711,5 +1712,12 @@ impl<T: Trait> Valuate for Module<T> {
 
         multiply_by_rational(liquidity_token_amount, mga_token_amount, mga_valuation)
             .unwrap_or_else(|_| Balance::max_value())
+    }
+}
+
+impl<T: Trait> ExecuteEncryptedExtrinsic<T> for Module<T>{
+    fn execute(sender: T::AccountId, tx: mangata_traits::EncryptedTX) {
+        // TODO add error handling
+        <Self as XykFunctionsTrait<T::AccountId>>::sell_asset(sender, tx.input_id, tx.output_id, tx.input_amount, tx.output_amount).unwrap();
     }
 }

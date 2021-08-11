@@ -67,6 +67,7 @@ std = [
 	"sp-application-crypto/std",
 	"orml-tokens/std",
 	"pallet-xyk/std",
+    "mangata-primitives/std",
 ]
 runtime-benchmarks = [
 	"frame-benchmarking",

@@ -3198,14 +3198,15 @@ dependencies = [
  "frame-system-benchmarking",
  "frame-system-rpc-runtime-api",
  "hex-literal",
- "log",
  "mangata-primitives 0.1.0",
+ "mangata-traits",
  "orml-tokens",
  "pallet-assets-info",
  "pallet-authorship",
  "pallet-babe",
  "pallet-balances",
  "pallet-bridge",
+ "pallet-encrypted-tx",
  "pallet-grandpa",
  "pallet-offences",
  "pallet-random-seed",
@@ -3236,6 +3237,18 @@ dependencies = [
  "sp-version",
  "substrate-wasm-builder-runner",
  "xyk-runtime-api",
+]
+
+[[package]]
+name = "mangata-traits"
+version = "0.1.0"
+dependencies = [
+ "frame-system",
+ "mangata-primitives 0.1.0",
+ "parity-scale-codec",
+ "sp-core",
+ "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
@@ -3805,6 +3818,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-encrypted-tx"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "mangata-primitives 0.1.0",
+ "mangata-traits",
+ "parity-scale-codec",
+ "sp-arithmetic",
+ "sp-core",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "pallet-finality-tracker"
 version = "2.0.1"
 source = "git+https://github.com/mangata-finance/substrate?branch=mangata-dev#d5da18db0c4a7b0285e4701363670f4d00254195"
@@ -4074,6 +4102,7 @@ dependencies = [
  "frame-system",
  "hex-literal",
  "mangata-primitives 0.1.0",
+ "mangata-traits",
  "orml-tokens",
  "pallet-assets-info",
  "parity-scale-codec",

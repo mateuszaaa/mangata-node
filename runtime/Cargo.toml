@@ -24,6 +24,7 @@ hex-literal = { optional = true, version = '0.3.1' }
 serde = { features = ['derive'], optional = true, version = '1.0.101' }
 
 # local dependencies
+pallet-encrypted-tx = { path = '../pallets/encrypted-tx', default-features = false, version = '0.1.0' }
 pallet-xyk = { path = '../pallets/xyk', default-features = false, version = '0.1.0' }
 xyk-runtime-api = { path = '../pallets/xyk/runtime-api', default-features = false, version = '2.0.0' }
 random-seed-runtime-api = {  default-features = false, version = '2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
@@ -36,6 +37,7 @@ pallet-staking = { path = '../pallets/staking', default-features = false, versio
 pallet-staking-reward-curve = { path = '../pallets/staking/reward-curve', default-features = false, version = "2.0.0" }
 pallet-treasury = { default-features = false, version='2.0.0' , git = "https://github.com/mangata-finance/substrate", branch = "mangata-dev" }
 mangata-primitives = { path = '../primitives/mangata', default-features = false, version = "0.1.0" }
+mangata-traits = { path = '../primitives/mangata-traits', default-features = false, version = "0.1.0" }
 orml-tokens = {  default-features = false, version = "0.3.1", git = "https://github.com/mangata-finance/open-runtime-module-library", branch = "mangata-dev" }
 
 # Substrate dependencies
@@ -131,4 +133,7 @@ std = [
     "pallet-xyk/std",
     "pallet-staking/std",
     "pallet-treasury/std",
+    "pallet-encrypted-tx/std",
+    "mangata-primitives/std",
+    "mangata-traits/std",
 ]

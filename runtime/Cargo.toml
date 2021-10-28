@@ -52,6 +52,7 @@ xyk-runtime-api = { path = '../pallets/xyk/runtime-api', default-features = fals
 mangata-primitives = { path = '../primitives/mangata', default-features = false, version = "0.1.0" }
 pallet-assets-info = { path = '../pallets/assets-info', default-features = false, version = '2.0.0' }
 pallet-sudo-origin = { path = '../pallets/sudo-origin', default-features = false, version = "2.0.0" }
+crypto-test = { path = '../pallets/crypto-test', default-features = false, version = '0.1.0' }
 
 # thrid party dependencies
 orml-tokens = {  default-features = false, version = "0.4.0", git = "https://github.com/mangata-finance/open-runtime-module-library", branch = "mangata-dev" }
@@ -111,6 +112,7 @@ std = [
 	"artemis-eth-app/std",
 	"artemis-asset/std",
 	"pallet-bridge/std",
+	"crypto-test/std",
 ]
 runtime-benchmarks = [
 	"sp-runtime/runtime-benchmarks",

@@ -54,6 +54,8 @@ pub use artemis_erc20_app;
 pub use artemis_eth_app;
 pub use pallet_verifier;
 
+pub use crypto_test;
+
 use static_assertions::const_assert;
 
 pub const MGA_TOKEN_ID: TokenId = 0;
@@ -448,6 +450,10 @@ impl artemis_erc20_app::Config for Runtime {
     type Event = Event;
 }
 
+impl crypto_test:: Config for Runtime{
+	type Event = Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -474,6 +480,7 @@ construct_runtime!(
 		Council: pallet_collective::<Instance1>::{Module, Call, Storage, Origin<T>, Event<T>, Config<T>},
 		Elections: pallet_elections_phragmen::{Module, Call, Storage, Event<T>, Config<T>},
 		SudoOrigin: pallet_sudo_origin::{Module, Call, Event},
+		CryptoTest: crypto_test::{Module, Call, Event<T>},
 	}
 );
 

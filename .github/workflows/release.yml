@@ -42,7 +42,11 @@ jobs:
         name: Tag and push images
         run: |
           echo "START"
-          echo ${{ steps.meta.outputs.tags }}
+          echo "${{ steps.meta.outputs.tags }}"
+          echo "START2"
+          for i in ${{ steps.meta.outputs.tags }}; do
+            echo $i
+          done
           echo "TOP"
 
   # publish-rococo:
